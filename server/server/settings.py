@@ -12,6 +12,20 @@ https://docs.djangoproject.com/en/6.1/ref/settings/
 
 from pathlib import Path
 
+INSTALLED_APPS = [
+# ... стандартни django apps ...
+'rest_framework',
+'corsheaders',
+'api',
+]
+
+MIDDLEWARE = [
+'corsheaders.middleware.CorsMiddleware', # Трябва да е най-горе в списъка!
+'django.middleware.common.CommonMiddleware',
+# ... останалите middleware ...
+]
+CORS_ALLOW_ALL_ORIGINS = True # Разрешаваме заявки от React
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
